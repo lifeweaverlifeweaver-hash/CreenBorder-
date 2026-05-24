@@ -47,17 +47,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 10px 0; /* Оптимизирано разстояние за логото */
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--secondary-color);
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
 
-        .logo span {
-            color: var(--primary-color);
+        .logo-img {
+            height: 55px; /* Идеална височина за хедъра */
+            width: auto;
+            display: block;
         }
 
         .nav-links {
@@ -90,7 +91,7 @@
         /* Hero Bölümü (Giriş) */
         .hero {
             background: linear-gradient(135deg, #ffffff 0%, #eceff1 100%);
-            padding: 150px 0 80px 0;
+            padding: 160px 0 80px 0;
             text-align: center;
         }
 
@@ -262,7 +263,10 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Green<span>Border</span></div>
+                <div class="logo-container">
+                    <!-- Официалното лого на проекта е вградено тук -->
+                    <img src="watermarked_img_5716468812921236232.png" alt="GreenBorder Logo" class="logo-img">
+                </div>
                 <ul class="nav-links">
                     <li><a href="#ozellikler">Özellikler</a></li>
                     <li><a href="#analiz">Güvence</a></li>
@@ -316,7 +320,7 @@
     <!-- İletişim Formu -->
     <section id="iletisim" class="contact">
         <div class="container">
-            <h2 class="section-title">7 Günlük Ekspres SKDM Analizi İçin Başvurun</h2>
+            <h2 class="section-title">7 Günlük Ekspres SKDM Analizi İçни Başvurun</h2>
             <div class="contact-form">
                 <form action="#" method="POST" onsubmit="alert('Başvurunuz başarıyla alındı! Ekibimiz 24 saat içinde sizinle iletişime geçecektir.'); return false;">
                     <div class="form-group">

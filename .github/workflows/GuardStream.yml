@@ -9,15 +9,33 @@ on:
 jobs:
   guardstream-audit:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write  # Разрешение за създаване на задачи
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 1. Сканиране за секрети (пароли и ключове)
+      # 1. Сканиране за секрети
       - name: GuardStream Secret Shield
+        id: gitleaks
         uses: gitleaks/gitleaks-action@v2
+        continue-on-error: true # Продължава, за да можем да създадем Issue
 
-      # 2. Статичен анализ на кода (SAST)
+      # 2. Автоматично създаване на Issue при открита заплаха
+      - name: Create Security Issue
+        if: steps.gitleaks.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'CRITICAL: Security Vulnerability Detected by GuardStream',
+              body: 'GuardStream откри потенциално изтичане на пароли или ключове. Моля, проверете лога на последния работен процес.'
+            })
+
+      # 3. Статичен анализ (Semgrep)
       - name: GuardStream Code Audit
         uses: returntocorp/semgrep-action@v1
         with:

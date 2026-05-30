@@ -1,2 +1,2 @@
 # CreenBorder-
-DB_PASSWORD = "super-secret-password-123"
+github_pat_11A2B3C4D5E6F7G8H9I0J1_somefakevaluehere

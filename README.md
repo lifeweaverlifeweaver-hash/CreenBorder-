@@ -1,2 +1,3 @@
 # CreenBorder-
 github_pat_11A2B3C4D5E6F7G8H9I0J1_somefakevaluehere
+AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE"
